@@ -30,47 +30,41 @@ Rover >> lookNorth [
 Rover >> moveForward [
 	direction = 'N'
 		ifTrue: [ 
-			y := y+1.
-			y > 4
-				ifTrue: [ 
-					y := 4 ].
-			^ self ].
-		
-			direction = 'E'
+			y := (y+1) min: 4].
+	direction = 'S'
 		ifTrue: [ 
-			x := x +1.
-			x > 4
-				ifTrue: [ 
-					x := 4 ].
-			^ self ].
-	
-	self shouldBeImplemented.
+			y := (y-1) max: 0].
+	direction = 'E'
+		ifTrue: [ 
+			x := (x+1) min: 4].
+	direction = 'W'
+		ifTrue: [ 
+			x := (x-1) max: 0].
 ]
 
 { #category : 'as yet unclassified' }
-Rover >> moveString: aString [ [ 
-	aString do: [ 
-		:char | 
-		char = $M 
-			ifTrue:[
-				self moveForward ].
-		char = $R 
-			ifTrue:[
-				self turnRight ].
-		char = $L 
-			ifTrue:[
-				self turnLeft ].
-			].
-		]
+Rover >> moveString: aString [ 
+	     aString do: [:char | 
+        char = $M ifTrue: [ self moveForward ].
+        char = $R ifTrue: [ self turnRight ].
+        char = $L ifTrue: [ self turnLeft ].
+    ].
 ]
 
 { #category : 'as yet unclassified' }
-Rover >> turnLeft [
-	direction = 'N'
-		ifTrue: [ 
-			direction:= 'W'.
-			^self ].
-	self shouldBeImplemented.
+Rover >> turnLeft [ 
+    direction = 'N'
+        ifTrue: [ direction := 'W' ]
+        ifFalse: [
+            direction = 'W'
+                ifTrue: [ direction := 'S' ]
+                ifFalse: [
+                    direction = 'S'
+                        ifTrue: [ direction := 'E' ]
+                        ifFalse: [ direction := 'N' ]
+                ]
+        ].
+
 ]
 
 { #category : 'as yet unclassified' }
@@ -80,6 +74,22 @@ Rover >> turnRight [
 			direction:= 'E'.
 			^self ].
 	self shouldBeImplemented.
+]
+
+{ #category : 'as yet unclassified' }
+Rover >> urnLeft [ 
+    direction = 'N'
+        ifTrue: [ direction := 'E' ]
+        ifFalse: [
+            direction = 'E'
+                ifTrue: [ direction := 'S' ]
+                ifFalse: [
+                    direction = 'S'
+                        ifTrue: [ direction := 'W' ]
+                        ifFalse: [ direction := 'N' ]
+                ]
+        ].
+
 ]
 
 { #category : 'accessing' }
