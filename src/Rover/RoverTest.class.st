@@ -88,7 +88,7 @@ RoverTest >> testRoadWithAStringIntroduction [
 	r lookNorth.
 	r moveString: 'MMRMLMM'.
 	
-	self assert: r x equals: 0.
+	self assert: r x equals: 1.
 	self assert: r y equals: 4.
 	self assert: r direction equals: 'N'.
 ]
@@ -114,7 +114,7 @@ RoverTest >> testTurnRight [
 	self assert: r direction equals: 'E'.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'tests' }
 RoverTest >> testlookNorth [
 	|r|
 	r := Rover new.
