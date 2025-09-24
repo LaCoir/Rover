@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'direction',
 		'x',
-		'y'
+		'y',
+		'xmax',
+		'ymax'
 	],
 	#category : 'Rover',
 	#package : 'Rover'
@@ -18,6 +20,8 @@ Rover >> direction [
 { #category : 'initialization' }
 Rover >> initialize [ 
 	super initialize.
+	xmax:= 9.
+	ymax:= 9.
 	direction:= 'N'.
 ]
 
@@ -30,13 +34,13 @@ Rover >> lookNorth [
 Rover >> moveForward [
 	direction = 'N'
 		ifTrue: [ 
-			y := (y+1) min: 4].
+			y := (y+1) min: (ymax - 1)].
 	direction = 'S'
 		ifTrue: [ 
 			y := (y-1) max: 0].
 	direction = 'E'
 		ifTrue: [ 
-			x := (x+1) min: 4].
+			x := (x+1) min: (xmax - 1)].
 	direction = 'W'
 		ifTrue: [ 
 			x := (x-1) max: 0].

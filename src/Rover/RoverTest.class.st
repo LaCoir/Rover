@@ -42,6 +42,23 @@ RoverTest >> testMoveMax [
 ]
 
 { #category : 'tests' }
+RoverTest >> testMoveMaxWithXYMax [ 
+	"initialize a map 9x9"
+	|r|
+	r := Rover new.
+	r x: 0.
+	r y: 8.
+	r lookNorth.
+	
+	"action"
+	r moveForward.
+	
+	"check"
+	self assert: r x equals: 0.
+	self assert: r y equals: 8.	
+]
+
+{ #category : 'tests' }
 RoverTest >> testMoving [ 
 "test moving
 initialize: the rover is at (2,2), North
