@@ -80,22 +80,6 @@ Rover >> turnRight [
 	self shouldBeImplemented.
 ]
 
-{ #category : 'as yet unclassified' }
-Rover >> urnLeft [ 
-    direction = 'N'
-        ifTrue: [ direction := 'E' ]
-        ifFalse: [
-            direction = 'E'
-                ifTrue: [ direction := 'S' ]
-                ifFalse: [
-                    direction = 'S'
-                        ifTrue: [ direction := 'W' ]
-                        ifFalse: [ direction := 'N' ]
-                ]
-        ].
-
-]
-
 { #category : 'accessing' }
 Rover >> x [
 	^ x
